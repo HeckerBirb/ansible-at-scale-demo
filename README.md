@@ -8,6 +8,9 @@ To reproduce:
 - Set the password of the `root` users in each machine to the same password (note: NOT recommended for production! This is where using keys becomes convenient and safer).
 - On your developer PC run `ansible-playbook -i environments/ubuntu playbooks/ubuntu.yml --ask-pass` and type in the root password you just configured (leave out `--ass-pass` if you are using keys).
 
+(Please note that the `html_root` in the `group_vars/all/main.yml` file is not actually used - but easily could be.)
+
+
 Congratulations, you now have three apache servers!
 
 Please refer to the Medium article for further details.
