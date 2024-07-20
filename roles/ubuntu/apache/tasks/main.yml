@@ -8,10 +8,10 @@
 
 - name: Set listening port for HTTPS
   become: yes
-  ansible.builtin.lineinfile:
+  ansible.builtin.replace:
     path: /etc/apache2/ports.conf
-    regexp: '^Listen [8]?443'
-    line: 'Listen {{ https_port }}'
+    regexp: '.*Listen [8]?443'
+    replace: '\tListen {{ https_port }}'
 
 - name: Set virtualhost port
   lineinfile:
