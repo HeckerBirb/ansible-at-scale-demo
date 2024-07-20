@@ -1,0 +1,20 @@
+---
+- name: Install FUSE requirement for AppImages
+  ansible.builtin.apt:
+    name: libfuse2
+    state: present
+
+- name: Check if neovim is installed
+  ansible.builtin.stat:
+    path: /usr/bin/nvim
+  register: nvim_path
+
+- name: Install neovim
+  when: not nvim_path.stat.exists
+  become: yes
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/latest/download/nvim.appimage"
+    dest: /usr/bin/nvim
+    mode: '0755'
+  # validate_certs: false
+ 

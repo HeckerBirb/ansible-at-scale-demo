@@ -1,0 +1,17 @@
+[ubuntu:children]
+production
+testing
+
+[production:children]
+prod_a
+prod_b
+
+[prod_a]
+web01.birb.local
+
+[prod_b]
+web02.birb.local
+
+[testing]
+test01.birb.local
+

@@ -1,0 +1,26 @@
+---
+- name: Install apache2
+  become: yes
+  ansible.builtin.apt:
+    name: apache2
+    update_cache: yes
+    state: latest
+
+- name: Set listening port for HTTPS
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/apache2/ports.conf
+    regexp: '^Listen [8]?443'
+    line: 'Listen {{ https_port }}'
+
+- name: Set virtualhost port
+  lineinfile:
+    dest: /etc/apache2/sites-available/000-default.conf
+    regexp: '^<VirtualHost .*>'
+    line: '<VirtualHost *:{{ https_port }}>'
+
+- name: Restart apache2
+  ansible.builtin.service:
+    name: apache2
+    state: restarted
+
