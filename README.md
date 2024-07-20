@@ -13,5 +13,5 @@ To reproduce:
 
 Congratulations, you now have three apache servers!
 
-Please refer to the ![Medium blog post](https://localnest.xyz/ansible-at-scale-working-with-multiple-environments-is-easy-b512d3afc71b) for further details.
+Please refer to the [Medium blog post](https://localnest.xyz/ansible-at-scale-working-with-multiple-environments-is-easy-b512d3afc71b) for further details.
 
